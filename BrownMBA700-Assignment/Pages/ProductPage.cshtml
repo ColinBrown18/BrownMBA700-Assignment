@@ -1,0 +1,43 @@
+﻿@page
+@model BrownMBA700_Assignment.Pages.ProductPageModel
+@{
+    ViewData["Title"] = "Product Page";
+}
+
+<html>
+    <head>
+        <title>Product Page</title>
+        <link rel="sylesheet" href="~/css/site.css"/>
+        <link href="~/SurveyPage.cshtml" />
+        <script type="text/javascript" src="~/js/site.js"></script>
+    </head>
+    <body onload="PageLoad()">
+        <h2>Product Page</h2>
+        <form id="formStyle" class="ProductPage">
+            <h1 id="productTitle" style="text-align:center">Default Text</h1>
+        </form>
+    </body>
+</html>
+
+<script href="~/SurveyPage.cshtml">
+// THIS WILL POPULATE THE PAGE WITH THE RESULTS OF THE SURVEYPAGE WHEN THE PAGE LOADS
+function PageLoad() {
+    // GRABS THE DATA IN THE LOCAL CACHE GATHERED FROM THE SURVEY PAGE
+    var newTitle = localStorage.getItem("title");
+    var checkBox = localStorage.getItem("box");
+    var newColor = localStorage.getItem("color");
+
+    // SETS THE TITLE TO THE TEXT THAT WAS ENTERED IN THE TEXTBOX
+    document.querySelector("h1").textContent = newTitle;
+    // SETS THE BACKGROUND COLOR TO WHAT WAS SELECTED IN THE DROPDOWN MENU
+    document.getElementById("formStyle").style.backgroundColor = newColor;
+    // CHECKS TO SEE IF THE CHECKBOX IS TRUE OR FALSE, THEN SETS THE FONTWEIGHT
+    if (checkBox == "true") {
+        // alert("true");
+        document.getElementById("productTitle").style.fontWeight = "bolder";
+    } else {
+        // alert("false");
+        document.getElementById("productTitle").style.fontWeight = "normal";
+    }
+}
+</script>

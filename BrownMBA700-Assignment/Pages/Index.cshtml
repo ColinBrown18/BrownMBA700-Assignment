@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html>
+    <head>
+        <title>Welcome to my MBA700 Project!</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="~/LoginPage.cshtml" />
+    </head>
+    <body style="background-color:dimgrey">
+        <h2 style="font-size:40px; font-weight:bold;">Welcome to my MBA700 Project!</h2>
+        <h2 style="text-align:center; font-size: 20px;">Here are instructions on how to use my application.</h2>
+        <table>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th>
+                    1. To begin, please login to your account.
+                </th>
+                <th style="text-align:center;">
+                    <img src="~/lib/photos/LoginPage.png"/>
+                </th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th>
+                    2. Once you've logged in, you will be able to fill out the Survey Page and
+                    then click on the "Create" button to create your customized page.
+                </th>
+                <th style="text-align:center;">
+                    <img src="~/lib/photos/SurveyPage.png"/>
+                </th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th>
+                    3. Finally you can view your page!
+                </th>
+                <th style="text-align:center;">
+                    <img src="/lib/photos/ProductPage.png"/>
+                </th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th style="text-align:right; padding-right:20px;">
+                    To begin please login!
+                </th>
+                <th style="text-align:left">
+                    <input class="Buttons" type="button" id="loginPage" name="loginPage" value="Login Page"/>
+                </th>
+            </tr>
+        </table>
+    </body>
+</html>
+
+<script>
+// THIS WILL TAKE THE USER TO THE LOGIN PAGE
+document.getElementById("loginPage").onclick = function() {
+    location.href = "/LoginPage";
+}
+</script>

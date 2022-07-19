@@ -1,0 +1,72 @@
+﻿@page
+@model BrownMBA700_Assignment.Pages.LoginPageModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="~/SurveyPage.cshtml" />
+        <script type="text/javascript" src="~/js/site.js"></script>
+    </head>
+    <body onload="clearLocalStorage()">
+        <h2>Login Page</h2>
+        <form class="LoginPage">
+            <label form="uname">Username:</label><br />
+            <input type="text" id="username" name="username"><br /><br />
+            <label form="pword">Password:</label><br />
+            <input type="password" id="password" name="password">
+            <input type="checkbox" id="hidePword" name="hidePword"/>  Show Password
+            <br /><br />
+            <input class="Buttons" type="button" id="loginButton" name="loginButton" value="Login"/><br /><br />
+            <input class="Buttons" type="button" id="createButton" name="createButton" value="Create Account"/>
+        </form>
+    </body>
+</html>
+
+<script>
+// USED TO TEST THE BUTTONS
+//document.getElementById("loginButton").onclick = function () { alert("Login Button Test!"); };
+//document.getElementById("createButton").onclick = function() { alert("Create Button Test!"); };
+
+// THIS VERIFY'S THE INPUT LOGIN INFO AND THEN TAKE THEM TO THE NEXT PAGE
+document.getElementById("loginButton").onclick = function() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    //var attempts = allUsers.length;
+   
+    for (var i = 0; i < allUsers.length; i++) {
+        // USED TO TEST THE OUTPUT OF EVERYTHING IN THE ARRAY'S
+        //alert(allUsers[i]);
+        //alert(allPasswords[i]);
+        
+        if (user == allUsers[i] && pass == allPasswords[i]) {
+            alert("You have logged in!");
+            location.href = "/SurveyPage";
+            break;
+        } else if (i == allUsers.length - 1) {
+            alert("Login Failed!");
+        }
+    }
+   
+}
+
+// THIS SHOWS AND HIDE THE TEXT IN THE PASSWORD
+document.getElementById("hidePword").onclick = function() {
+    var pass = document.getElementById("password");
+
+    if (pass.type == "password") {
+        pass.type = "text";
+    } else {
+        pass.type = "password";
+    }
+}
+
+// THIS TAKES THE USER TO THE CREATE ACCOUNT PAGE
+document.getElementById("createButton").onclick = function() {
+    location.href = "/CreateAccount";
+}
+
+</script>

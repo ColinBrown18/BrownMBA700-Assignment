@@ -1,0 +1,63 @@
+﻿@page
+@model BrownMBA700_Assignment.Pages.CreateAccountModel
+@{
+}
+
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="~/LoginPage.cshtml" />
+        <script type="text/javascript" src="~/js/site.js"></script>
+    </head>
+    <body class="body">
+        <h2>Create Account Page</h2>
+        <form class="LoginPage">
+            <label form="uname">Create Username:</label><br />
+            <input type="text" id="username" name="username"><br /><br />
+            <label form="pword">Create Password:</label><br />
+            <input type="text" id="password" name="password"><br /><br />
+            <input class="Buttons" type="button" id="createAccount" name="createAccount" value="Create Account"/><br /><br />
+            <input class="Buttons" type="button" id="loginButton" name="loginButton" value="Nevermind, Login"/>
+        </form>
+    </body>
+</html>
+
+
+<script>
+// THIS WILL ADD A USERNAME AND PASSWORD TO THE ARRAYS AND BRING THEM BACK TO THE LOGIN PAGE
+document.getElementById("createAccount").onclick = function() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    //alert(user);
+    //alert(pass);
+
+    alert("Currently no way to create an account. Feature may be added later.");
+
+    /*
+    for (var i = 0; i < allUsers.length; i++) {
+        if (user == allUsers[i]) {
+            alert("Username Already Exists!");
+            break;
+        } else if (user != allUsers[i] && i == allUsers.length - 1) {
+            // DOESN'T SEEM TO UPDATE THE SITE.JS ARRAY'S.  WILL PROBABLY NEED TO SWITH TO STORE EVERYTHING ON TXT FILE
+            allUsers.push(user);
+            allPasswords.push(pass);
+            alert("Account Created!");
+            location.href = "/LoginPage";
+            for (var i = 0; i < allUsers.length; i++) {
+                alert(allUsers[i]);
+                alert(allPasswords[i]);
+            }
+            break;
+        }
+    }
+    */
+}
+
+// THIS WILL BRING THE USER BACK TO THE LOGIN PAGE
+document.getElementById("loginButton").onclick = function() {
+    location.href = "/LoginPage";
+}
+
+</script>

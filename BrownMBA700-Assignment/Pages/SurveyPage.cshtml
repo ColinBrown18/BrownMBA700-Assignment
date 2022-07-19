@@ -1,0 +1,102 @@
+﻿@page
+@model BrownMBA700_Assignment.Pages.SurveyPageModel
+@{
+    ViewData["Title"] = "Survey Page";
+}
+
+<html>
+    <head>
+        <title>Survey Page</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="~/ProductPage.cshtml" />
+        <script type="text/javascript" src="~/js/site.js"></script>
+    </head>
+    <body onload="clearLocalStorage()">
+        <h2>Survey Page</h2>
+        <br /><br />
+        <table class="SurveyTable">
+            <tr><th><br /></th></tr>
+            <tr>
+                <th class="OuterColumn"></th>
+                <th>
+                    <!--QUESTION 1-->
+                    Enter the Title
+                </th>
+                <th class="CenterColumn"></th>
+                <th>
+                    <!--ANSWER 1-->
+                    <input type="text" id="titleInput" name="titleInput"/>
+                </th>
+                <th class="OuterColumn"></th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th class="OuterColumn"></th>
+                <th>
+                    <!--QUESTION 2-->
+                    Bold Font?
+                </th>
+                <th class="CenterColumn"></th>
+                <th>
+                    <!--ANSWER 2-->
+                    <input type="checkbox" id="boldFont" name="boldFont"/>  Yes or No
+                </th>
+                <th class="OuterColumn"></th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th class="OuterColumn"></th>
+                <th>
+                    <!--QUESTION 3-->
+                    <label for="outputColor">Choose a Color:</label>
+                </th>
+                <th class="CenterColumn"></th>
+                <th>
+                    <!--ANSWER 3-->
+                    <select name="outputColor" id="outputColor">
+                        <option value="red">Red</option>
+                        <option value="white">White</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                </th>
+                <th class="OuterColumn"></th>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th><br /></th>
+                <th><br /></th>
+                <th>
+                    <input class="Buttons" type="button" id="compileSurvey" name="compileSurvey" value="Create"/>
+                </th>
+                <th><br /></th>
+                <th><br /></th>
+            </tr>
+            <tr><th><br /></th></tr>
+        </table>
+    </body>
+</html>
+
+<script>
+// THIS WILL COMPILE THE SURVEY AND TAKE YOU TO THE RESULTS PAGE
+document.getElementById("compileSurvey").onclick = function() {
+    //alert("You created your results!");
+    var title = document.getElementById("titleInput").value;
+    var box = document.getElementById("boldFont").checked;
+    var color = document.getElementById("outputColor").value;
+    //alert(title);
+    var output = title + " " + box + " " + color;
+
+    if (title.length == 0) {
+        alert("Please enter a title");
+    } else if (title.length >= 20) {
+        alert("Title is too long!");
+    } else {
+        // LOCALSTORAGE WILL USE BROWSER CACHE TO TEMPORARILY STORE THE DATA ENTERED ON THIS PAGE
+        localStorage.setItem("title", title);
+        localStorage.setItem("box", box);
+        localStorage.setItem("color", color);
+        alert(output);
+        location.href = "/ProductPage";
+    }
+}
+</script>
